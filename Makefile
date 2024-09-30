@@ -1,5 +1,8 @@
 default: fmt
 
+create-docs:
+	terraform-docs markdown ./network > ./network/README.md
+
 fmt:
 	terraform fmt -recursive
 
