@@ -12,9 +12,13 @@ fmt-check:
 validate:
 	terraform validate
 
+lint:
+	tflint --recursive
+
 pre-commit:
 	@make fmt-check
 	@make validate
+	@make lint
 
 setup-git-hooks:
 	(rm -rf .git/hooks && cd .git/ && ln -s ../.git-hooks hooks)
