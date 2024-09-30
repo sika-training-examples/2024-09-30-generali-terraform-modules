@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "this" {
-  name     = var.name
+  name     = "${var.name}-service-plan"
   location = var.location
 }
 
