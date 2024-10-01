@@ -29,3 +29,9 @@ variable "docker_registry_url" {
   description = "URL of the Docker registry"
   type        = string
 }
+
+variable "env" {
+  description = "Environment variables for Docker container"
+  type        = map(string)
+  default     = {}
+}

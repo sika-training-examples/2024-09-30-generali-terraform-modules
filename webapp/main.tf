@@ -10,4 +10,6 @@ resource "azurerm_linux_web_app" "this" {
       docker_registry_url = var.docker_registry_url
     }
   }
+
+  app_settings = var.env
 }
