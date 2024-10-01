@@ -35,3 +35,9 @@ variable "env" {
   type        = map(string)
   default     = {}
 }
+
+variable "worker_count" {
+  description = "Number of workers"
+  type        = number
+  default     = 1
+}
