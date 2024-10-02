@@ -15,3 +15,34 @@ resource "rancher2_project" "this" {
     }
   }
 }
+
+resource "rancher2_namespace" "this" {
+  lifecycle {
+    ignore_changes = [
+      labels["kubernetes.io/metadata.name"],
+    ]
+  }
+
+  name       = rancher2_project.this.name
+  project_id = rancher2_project.this.id
+
+  container_resource_limit {
+    limits_cpu      = "100m"
+    limits_memory   = "200Mi"
+    requests_cpu    = "50m"
+    requests_memory = "50Mi"
+  }
+}
+
+resource "rancher2_registry" "this" {
+  name = "harbor-robot"
+
+  project_id   = rancher2_project.this.id
+  namespace_id = rancher2_namespace.this.id
+
+  registries {
+    address  = var.registry
+    username = var.registry_username
+    password = var.registry_password
+  }
+}

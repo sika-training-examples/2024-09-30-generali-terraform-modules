@@ -8,6 +8,22 @@ variable "cluster_id" {
   type        = string
 }
 
+
+variable "registry" {
+  description = "The container registry to use for the project"
+  type        = string
+}
+
+variable "registry_username" {
+  description = "The username for the container registry"
+  type        = string
+}
+
+variable "registry_password" {
+  description = "The password for the container registry"
+  type        = string
+}
+
 variable "project_limit_cpu" {
   description = "The CPU limit for the project"
   type        = string
